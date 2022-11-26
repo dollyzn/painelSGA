@@ -3,18 +3,19 @@
     <div class="columns is-gapless">
       <div class="column is-multiline featured-column">
         <header class="column">
-          <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured>
+          <iframe style="width: 100%; height: 100% !important;" src="https://www.youtube.com/embed/y4niIqzDk6w?hl=pt&cc_lang_pref=pt&cc_load_policy=0&fs=0&mute=1&controls=0&autoplay=1&loop=1&playlist=y4niIqzDk6w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </header>
         <footer class="column" :style="{ 'background-color': config.footerBgColor, 'color': config.footerFontColor }">
-          <img :src="logoUrl">
+          <h2 class="title" :style="{ 'color': config.sidebarFontColor }">
+            Últimas<br>Senhas<br>Chamadas
+          </h2>
+          <history :messages="messages" v-if="lastMessage" :fontColor="config.sidebarFontColor"></history>
         </footer>
       </div>
       <div class="column is-one-quarter history-column" :style="{ 'background-color': config.sidebarBgColor, 'color': config.sidebarFontColor }">
         <header>
-          <h2 class="title" :style="{ 'color': config.sidebarFontColor }">
-            {{ 'history.title'|trans }}
-          </h2>
-          <history :messages="messages" v-if="lastMessage" :fontColor="config.sidebarFontColor"></history>
+          <img :src="logoUrl">
+          <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured>
         </header>
         <footer :style="{ 'background-color': config.clockBgColor, 'color': config.clockFontColor }">
           <clock :locale="config.locale" :dateFormat="'date_format'|trans" :fontColor="config.clockFontColor"></clock>
@@ -92,40 +93,57 @@
   .featured-column
       header
         height: 80vh
+        iframe
+        height: 
       footer
         height: 20vh
+        width: 100%
         padding: 5vh
-        img
-          height: 10vh
-      .featured-message
-        text-align: center
-        .title
-          font-size: 30vh
-          font-weight: bold
-        .subtitle
-          font-size: 10vh
-        .description
-          font-size: 10vh
+        display: flex
+        .history
+        .message
+          span
+            text-align: left
+            display: block
+          .title
+            font-size: 8vh
+            font-weight: bold
+          .subtitle
+            font-size: 4vh
+            font-style: italic
 
   .history-column
     height: 100vh
+    img
+      height: 15vh
+      padding-left: 8px
     header
       height: 80vh
       padding: 1rem 0
     footer
-      height: 20vh
+      height: 30vh
       padding: 1rem 0
       text-align: center
       background: rgba(0,0,0,.1)
     *
       color: #2c3e50
+      .featured-message
+        text-align: center
+        padding-top: 70px
+        .title
+          font-size: 15vh
+          font-weight: bold
+        .subtitle
+          font-size: 5vh
+        .description
+          font-size: 5vh
     .title
       text-align: center
       font-weight: bold
     .message
       background-color: transparent
       border-left: 8px solid rgba(0,0,0,.3)
-      padding-left: 2rem
+      padding-left: rem
       margin-bottom: 1rem
     .empty
       p
