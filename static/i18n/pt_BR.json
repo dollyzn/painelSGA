@@ -20,6 +20,7 @@
   "settings.label.sidebar_font_color": "Fonte da lateral",
   "settings.label.footer_bg_color": "Fundo do rodapé",
   "settings.label.footer_font_color": "Fonte do rodapé",
+  "settings.label.videoURL": "Link do vídeo",
   "settings.label.clock_bg_color": "Fundo do relógio",
   "settings.label.clock_font_color": "Fonte do relógio",
   "settings.label.locale": "Idioma",

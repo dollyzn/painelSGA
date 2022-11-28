@@ -3,7 +3,7 @@
     <div class="columns is-gapless">
       <div class="column is-multiline featured-column">
         <header class="column">
-          <iframe style="width: 100%; height: 100% !important;" src="https://www.youtube.com/embed/y4niIqzDk6w?hl=pt&cc_lang_pref=pt&cc_load_policy=0&fs=0&mute=1&controls=0&autoplay=1&loop=1&playlist=y4niIqzDk6w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe style="width: 100%; height: 100% !important;" :src="config.videoURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </header>
         <footer class="column" :style="{ 'background-color': config.footerBgColor, 'color': config.footerFontColor }">
           <h2 class="title" :style="{ 'color': config.sidebarFontColor }">
@@ -100,6 +100,8 @@
         width: 100%
         padding: 5vh
         display: flex
+        h2
+         line-height: 45px
         .history
         .message
           span
@@ -115,8 +117,10 @@
   .history-column
     height: 100vh
     img
+      display: block
+      margin-left: auto
+      margin-right: auto
       height: 15vh
-      padding-left: 8px
     header
       height: 80vh
       padding: 1rem 0

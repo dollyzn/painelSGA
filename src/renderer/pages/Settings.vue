@@ -156,6 +156,16 @@
                 </div>
               </div>
             </div>
+             <div class="column">
+              <div class="field">
+                <label class="label">
+                  {{ 'settings.label.videoURL'|trans }}
+                </label>
+                <div class="control">
+                  <input class="input is-medium" type="url" placeholder="https://" v-model="config.videoURL">
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="columns">
