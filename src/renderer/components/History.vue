@@ -5,7 +5,7 @@
         {{ 'history.empty'|trans }}
       </p>
     </div>
-    <div style="display: inline-block; padding-left: 80px; background-color: transparent" v-for="message in messages" class="message" :key="message.id">
+    <div style="display: inline-block; padding-left: 60px; background-color: transparent" v-for="message in messages" class="message" :key="message.id">
       <span class="title" v-if="showMessageTitle" :style="{ 'color': fontColor }">
         {{ message.title }}
       </span>
