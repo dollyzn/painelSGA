@@ -49,6 +49,14 @@ function createWindow () {
             }
           }
         },
+        {
+          label: 'HideMenu',
+          click () {
+            if (mainWindow.webContents) {
+              Menu.setApplicationMenu(null)
+            }
+          }
+        },
         {type: 'separator'},
         {role: 'reload'},
         {role: 'forcereload'},
