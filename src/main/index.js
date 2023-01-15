@@ -23,6 +23,7 @@ function createWindow () {
    */
   mainWindow = new BrowserWindow({
     useContentSize: true,
+    autoHideMenuBar: true,
     fullscreen: fullscreen,
     webPreferences: {
       nodeIntegration: true
