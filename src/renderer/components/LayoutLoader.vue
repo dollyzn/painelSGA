@@ -15,8 +15,7 @@
     const tokens = $store.state.config.server.split('//')
     const schema = tokens[0]
     const host = tokens[1].split('/')[0].split(':')[0]
-    const port = 2020
-    const url = `${schema}//${host}:${port}`
+    const url = `${schema}//${host}`
 
     log('[websocket] trying connect to websocket server: ' + url)
 
