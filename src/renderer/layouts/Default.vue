@@ -3,7 +3,11 @@
     <div class="columns is-gapless">
       <div class="column is-multiline featured-column">
         <header class="column">
-          <iframe style="width: 100%; height: 100% !important;" :src="config.videoURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <video width="100%" height="100%" autoplay controls v-if="!hlsvideo">
+            <source :src="config.videoURL" type="video/mp4">
+            Don't supported
+          </video>
+          <HlsVideo :url="hlsvideo" v-if="hlsvideo" />
         </header>
         <footer class="column" :style="{ 'background-color': config.footerBgColor, 'color': config.footerFontColor }">
           <h2 class="title" :style="{ 'color': config.sidebarFontColor }">
@@ -29,6 +33,7 @@
   import Clock from '@/components/Clock.vue'
   import Featured from '@/components/Featured.vue'
   import History from '@/components/History.vue'
+  import HlsVideo from '@/components/HlsVideo.vue'
   import audio from '@/services/audio'
   import speech from '@/services/speech'
 
@@ -37,7 +42,8 @@
     components: {
       Clock,
       Featured,
-      History
+      History,
+      HlsVideo
     },
     computed: {
       messages () {
@@ -59,6 +65,9 @@
       pageFontColor () {
         const peso = this.lastMessage.$data ? this.lastMessage.$data.peso : 1
         return peso > 0 ? this.config.pageFontColorPriority : this.config.pageFontColorNormal
+      },
+      hlsvideo () {
+        return this.config.videoM3URL ? this.config.videoM3URL : false
       }
     },
     methods: {

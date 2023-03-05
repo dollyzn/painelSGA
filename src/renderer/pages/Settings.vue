@@ -162,7 +162,17 @@
                   {{ 'settings.label.videoURL'|trans }}
                 </label>
                 <div class="control">
-                  <input class="input is-medium" type="url" placeholder="https://" v-model="config.videoURL">
+                  <button class="button is-medium" type="button" @click.prevent="selectFile">Escolher arquivo</button>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label">
+                  Link M3U8
+                </label>
+                <div class="control">
+                  <input class="input is-medium" type="url" placeholder="https://" v-model="config.videoM3URL">
                 </div>
               </div>
             </div>
@@ -409,6 +419,7 @@
   import audio from '@/services/audio'
   import speech from '@/services/speech'
   import { log } from '@/util/functions'
+  const { dialog } = require('electron').remote
 
   function load (ctx, isInit) {
     ctx.config = JSON.parse(JSON.stringify(ctx.$store.state.config))
@@ -566,6 +577,18 @@
           log('Testing end')
         }, (e) => {
           log('Testing error', e)
+        })
+      },
+      selectFile () {
+        dialog.showOpenDialog({
+          properties: ['openFile'],
+          filters: [{ name: 'Videos', extensions: ['mp4', 'avi', 'mov'] }]
+        }).then(result => {
+          if (!result.canceled && result.filePaths.length > 0) {
+            this.config.videoURL = result.filePaths[0]
+          }
+        }).catch(err => {
+          console.log(err)
         })
       }
     },
