@@ -3,7 +3,7 @@
     <div class="columns is-gapless">
       <div class="column is-multiline featured-column">
         <header class="column">
-          <video width="100%" height="100%" autoplay controls v-if="!hlsvideo">
+          <video width="100%" height="100%" autoplay controls v-if="!hlsvideo" volume="0.3">
             <source :src="config.videoURL" type="video/mp4">
             Don't supported
           </video>

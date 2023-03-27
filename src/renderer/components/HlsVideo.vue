@@ -16,18 +16,19 @@ export default {
     }
   },
   mounted () {
+    const video = this.$refs.video
+    video.volume = 0.3
     if (Hls.isSupported()) {
-      const video = this.$refs.video
       const hls = new Hls()
       hls.loadSource(this.url)
       hls.attachMedia(video)
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
         video.play()
       })
-    } else if (this.$refs.video.canPlayType('application/vnd.apple.mpegurl')) {
-      this.$refs.video.src = this.url
-      this.$refs.video.addEventListener('loadedmetadata', () => {
-        this.$refs.video.play()
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = this.url
+      video.addEventListener('loadedmetadata', () => {
+        video.play()
       })
     }
   }
