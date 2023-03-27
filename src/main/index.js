@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow, Menu } from 'electron'
+import { app, BrowserWindow, Menu, screen } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -17,11 +17,26 @@ const winURL = process.env.NODE_ENV === 'development'
 
 function createWindow () {
   const fullscreen = process.argv.indexOf('--fullscreen') !== -1
+  const monitor2 = process.argv.indexOf('--monitor2') !== -1
+  const displays = screen.getAllDisplays()
+  var display
+
+  if (monitor2) {
+    display = displays.find((display) => {
+      return display.bounds.x !== 0 || display.bounds.y !== 0
+    })
+  } else {
+    display = displays.find((display) => {
+      return display.bounds.x === 0 || display.bounds.y === 0
+    })
+  }
 
   /**
    * Initial window options
    */
   mainWindow = new BrowserWindow({
+    x: display.bounds.x,
+    y: display.bounds.y,
     useContentSize: true,
     autoHideMenuBar: true,
     fullscreen: fullscreen,
