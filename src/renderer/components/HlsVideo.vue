@@ -17,7 +17,7 @@ export default {
   },
   mounted () {
     const video = this.$refs.video
-    video.volume = 0.3
+    video.volume = 0.1
     if (Hls.isSupported()) {
       const hls = new Hls()
       hls.loadSource(this.url)
