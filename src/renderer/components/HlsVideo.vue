@@ -1,6 +1,6 @@
 <template>
   <div>
-    <video ref="video" width="100%" height="100%" controls></video>
+    <video ref="video" width="100%" height="100%" controls loop></video>
   </div>
 </template>
 
